@@ -38,35 +38,43 @@ $ php artisan websocket:serve
 
 #### An example `products` component
 ```bash
-$ php artisan make:component Products ?backend
+$ php artisan make:component Products backend # optional [backend|frontend]
 ```
 
-Since the above above command took no arguments, it will generate the 
-following:
- - Controller:
-   - `App\Http\Controllers\Backend\ProductController`
+Since the above above command took no options and had `backend` passed as an argument, 
+it will generate the following, full component:
+ - Controller and Views (configurable, optional):
+   - Create (with form data)
+       - `App\Http\Controllers\Backend\ProductController::create()`
+       - `resources/pages/backend/products/create.vue`
+   - Index (with props)
+       - `App\Http\Controllers\Backend\ProductController::index()`
+       - `resources/pages/backend/products/index.vue`
+   - Edit (with form data & props)
+     - `App\Http\Controllers\Backend\ProductController::edit()`
+     - `resources/pages/backend/products/edit.vue`
+   - Show (with props)
+       - `App\Http\Controllers\Backend\ProductController::show()`
+       - `resources/pages/backend/products/show.vue`
+ 
  - Requests:
-   - `App\Http\Requests\Users\UpdateProductRequest`
-   - `App\Http\Requests\Users\CreateProductRequest`
-- Model (with soft-deletes)
+   - `App\Http\Requests\UpdateProductRequest`
+   - `App\Http\Requests\CreateProductRequest`
+
+- Model (markable, with soft-deletes)
   - `App\Models\Product`
+
 - Migration (with soft-deletes)
   - `database/XXX_create_products_table.php`
+
 - Seeder
   - `Database\Seeders\ProductSeeder`
+
 - Factory
   - `Database\Factories\ProductFactory`
+
 - Test
   - `Tests\Feature\ProductsPageTest`
-- Views (configurable - follows Laravel's resource route nomenclature)
-  - Create
-    - `resources/pages/backend/products/create.vue`
-  - Index
-    - `resources/pages/backend/products/index.vue`
-  - Edit
-    - `resources/pages/backend/products/edit.vue`
-  - Show
-    - `resources/pages/backend/products/show.vue`
 
 ### Optimize
 ```bash

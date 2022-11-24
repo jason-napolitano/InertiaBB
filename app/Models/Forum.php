@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent;
 class Forum extends Model
 {
     use Eloquent\Factories\HasFactory;
+    use Eloquent\SoftDeletes;
 
     protected $fillable = [
         'name',
