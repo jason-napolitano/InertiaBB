@@ -1,0 +1,26 @@
+$backupFonts: 'Calibri Light', sans-serif;
+$fontFamily: 'AppFont', $backupFonts;
+
+#app,
+html,
+body {
+  /* Create the parallax scrolling effect */
+  // background: url("/img/background.jpg") no-repeat fixed center;
+  // background-size: cover;
+  background: #faf7f2;
+  font-family: $backupFonts;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+.md-editor-content {
+  font-family: $backupFonts !important;
+  padding: 0 0.5rem 0.5rem 0.5rem !important;
+}
+
+.Vue-Toastification__toast {
+  margin-bottom: 0 !important;
+  bottom: 0 !important;
+}

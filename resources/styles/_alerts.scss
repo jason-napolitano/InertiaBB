@@ -1,0 +1,25 @@
+@import './colors';
+
+.alert {
+  border-radius: 0;
+}
+
+.alert-info {
+  background-color: $color-flat-blue;
+  color: $color-offwhite;
+}
+
+.alert-danger {
+  background-color: $color-flat-red;
+  color: $color-offwhite;
+}
+
+.alert-warning {
+  background-color: $color-flat-orange;
+  color: $color-offwhite;
+}
+
+.alert-success {
+  background-color: $color-flat-green;
+  color: $color-offwhite;
+}
