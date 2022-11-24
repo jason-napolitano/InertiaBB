@@ -75,7 +75,10 @@ it will generate the following, full component:
 
 - Test
   - `Tests\Feature\ProductsPageTest`
-
+##### Options
+| Option Name | Options |
+-------------------------
+| `--controller` | `yes|no` |
 ### Optimize
 ```bash
 # clear all caches
