@@ -47,7 +47,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min'
  * -------------------------------------------------------------------------- */
 
 // third-party
-import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'primeflex/primeflex.scss'
 import 'animate.css'
@@ -59,6 +58,7 @@ import '@/styles/_variables.scss'
 import '@/styles/_progress.scss'
 import '@/styles/_animate.scss'
 import '@/styles/_colors.scss'
+import '@/styles/_editor.scss'
 import '@/styles/_layout.scss'
 import '@/styles/_custom.scss'
 import '@/styles/_alerts.scss'

@@ -10,22 +10,22 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ForumFactory extends Factory
 {
-	/**
-	 * Define the model's default state.
-	 *
-	 * @return array<string, mixed>
-	 *
-	 * @throws \Exception
-	 */
-	public function definition(): array
-	{
-		$name = $this->faker->sentence();
-		return [
-			'name'     => $name,
-			'uuid'     => Str::uuid(),
-			'content'  => $this->faker->paragraph(2),
-			'synopsis' => $this->faker->paragraph(1),
-			'user_id'  => random_int(1, 50),
-		];
-	}
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     *
+     * @throws \Exception
+     */
+    public function definition(): array
+    {
+        $name = $this->faker->sentence();
+        return [
+            'name'     => $name,
+            'uuid'     => Str::uuid(),
+            'content'  => $this->faker->paragraph(2),
+            'synopsis' => $this->faker->paragraph(1),
+            'user_id'  => random_int(1, 50),
+        ];
+    }
 }

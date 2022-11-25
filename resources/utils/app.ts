@@ -25,8 +25,8 @@ const page = usePage()
  */
 export const can = (name: string) => {
   // roles and permissions
-  const permissions = page.props.value.user.permissions
-  const roles = page.props.value.user.roles
+  const permissions = page.props.value.user.permissions ?? []
+  const roles = page.props.value.user.roles ?? []
 
   // empty collection for roles and permissions
   let collection: object[] = []
@@ -195,47 +195,6 @@ export const restoreRecord = (to: string, record: object) => {
  * @return {"/storage/"}
  */
 export const storagePath = (value: string = '') => `/storage/${value}`
-
-/** --------------------------------------------
- * Returns a message for the `likes` counter
- *
- * @param {object[]} value
- *
- * @returns {string}
- */
-export const likesText = (value: object[] | []): string =>
-  `${value.length} ${plural('Like', value.length)}`
-
-/** --------------------------------------------
- * Returns a message for the `replies` counter
- *
- * @param {object[]} value
- *
- * @returns {string}
- */
-export const favoritesText = (value: object[] | []): string =>
-  `${value.length} ${plural('Subscription', value.length)}`
-
-/** --------------------------------------------
- * Returns a message for the `replies` counter
- *
- * @param {object[]} value
- *
- * @returns {string}
- */
-export const repliesText = (value: object[] | []): string =>
-  `${value.length} ${plural('Reply', value.length)}`
-
-/** --------------------------------------------
- * Has a record been edited since its creation?
- * If so, display the correct message or false.
- *
- * @returns {string|boolean}
- */
-export const isEditedMessage = (record: BaseInterface, type?: string) =>
-  record.updated_at !== record.created_at
-    ? `Last modified on ${formatDate(record.updated_at)}`
-    : false
 
 /** --------------------------------------------
  * Currently logged-in user

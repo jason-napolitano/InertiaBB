@@ -19,5 +19,5 @@ Broadcast::channel('App.Models.User.{id}', static function ($user, $id) {
 
 
 Broadcast::channel('orders.{id}', static function ($user, $id) {
-	return $user->id === \App\Models\Forum::findOrNew($id)->user_id;
+    return $user->id === \App\Models\Forum::findOrNew($id)->user_id;
 });

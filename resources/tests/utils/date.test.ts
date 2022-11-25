@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals'
 import * as date from '../../utils/date'
 
-// scoped constants
+// scoped variables -->
 let original: string = '2022-11-09T21:10:13.000000Z'
 let expected: string
 

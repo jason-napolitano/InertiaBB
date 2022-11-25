@@ -20,6 +20,10 @@ export const slugify = (string: string): string =>
  * Truncate a string and add an ellipsis to the
  * end of it
  *
+ * EG:
+ *  - BEFORE: This is an awesome sentence!
+ *  - AFTER:  This is an awesome...
+ *
  * @param str {string}
  * @param n {number}
  * @returns {string}
@@ -30,6 +34,10 @@ export const truncate = (str: string, n: number = 1) =>
 /** --------------------------------------------
  * Removes hyphens (EG: '-' )  from a string
  *
+ * EG:
+ *  - BEFORE: i-am-a-string-that-has-been-slugified
+ *  - AFTER:  i am a string that has been slugified
+ *
  * @param phrase {string}
  * @returns {string}
  */
@@ -38,6 +46,10 @@ export const removeHyphens = (phrase: string) => phrase.replace(/-/g, ' ')
 /** --------------------------------------------
  * Converts the first letter of each word in
  * a multi-word string to uppercase
+ *
+ * EG:
+ *  - BEFORE: we are going to the beach
+ *  - AFTER:  We Are Going To The Beach
  *
  * @param phrase {string}
  * @returns {string}
@@ -52,6 +64,10 @@ export const toTitleCase = (phrase: string) =>
 /** --------------------------------------------
  * Capitalize the first letter in a string
  *
+ * EG:
+ *  - BEFORE: we are going to the beach today
+ *  - AFTER:  We are going to the beach today
+ *
  * @link https://www.php.net/manual/en/function.ucfirst.php
  *
  * @param string {string}
@@ -61,7 +77,11 @@ export const ucFirst = (string: string) =>
   string.charAt(0).toUpperCase() + string.slice(1)
 
 /** --------------------------------------------
- * Returns the plural of an English word.
+ * Returns the plural version of an English word.
+ *
+ * EG:
+ *  - BEFORE: egg
+ *  - AFTER:  eggs
  *
  * @export
  * @param {string} word
@@ -78,6 +98,33 @@ const irregular: { [key: string]: string } = {
   tooth: 'teeth',
   person: 'people',
 }
+const uncountable: string[] = [
+  'sheep',
+  'fish',
+  'deer',
+  'moose',
+  'series',
+  'species',
+  'money',
+  'rice',
+  'information',
+  'equipment',
+  'bison',
+  'cod',
+  'offspring',
+  'pike',
+  'salmon',
+  'shrimp',
+  'swine',
+  'trout',
+  'aircraft',
+  'hovercraft',
+  'spacecraft',
+  'sugar',
+  'tuna',
+  'you',
+  'wood',
+]
 export const plural = (word: string, amount?: number): string => {
   if (amount !== undefined && amount === 1) {
     return word
@@ -102,33 +149,6 @@ export const plural = (word: string, amount?: number): string => {
     '(us)$': '$1es',
     '([^s]+)$': '$1s',
   }
-  const uncountable: string[] = [
-    'sheep',
-    'fish',
-    'deer',
-    'moose',
-    'series',
-    'species',
-    'money',
-    'rice',
-    'information',
-    'equipment',
-    'bison',
-    'cod',
-    'offspring',
-    'pike',
-    'salmon',
-    'shrimp',
-    'swine',
-    'trout',
-    'aircraft',
-    'hovercraft',
-    'spacecraft',
-    'sugar',
-    'tuna',
-    'you',
-    'wood',
-  ]
   // save some time in the case that singular and plural are the same
   if (uncountable.indexOf(word.toLowerCase()) >= 0) {
     return word
@@ -153,6 +173,10 @@ export const plural = (word: string, amount?: number): string => {
 
 /** --------------------------------------------
  * Returns the singular of an English word.
+ *
+ * EG:
+ *  - BEFORE: eggs
+ *  - AFTER:  egg
  *
  * @export
  * @param {string} word
@@ -193,33 +217,6 @@ export const singular = (word: string, amount?: number): string => {
     '(us)es$': '$1',
     s$: '',
   }
-  const uncountable: string[] = [
-    'sheep',
-    'fish',
-    'deer',
-    'moose',
-    'series',
-    'species',
-    'money',
-    'rice',
-    'information',
-    'equipment',
-    'bison',
-    'cod',
-    'offspring',
-    'pike',
-    'salmon',
-    'shrimp',
-    'swine',
-    'trout',
-    'aircraft',
-    'hovercraft',
-    'spacecraft',
-    'sugar',
-    'tuna',
-    'you',
-    'wood',
-  ]
   // save some time in the case that singular and plural are the same
   if (uncountable.indexOf(word.toLowerCase()) >= 0) {
     return word
@@ -243,6 +240,11 @@ export const singular = (word: string, amount?: number): string => {
 
 /** --------------------------------------------
  * Strips a string of single and double quotes
+ *
+ * EG:
+ *  - BEFORE: "I am a quoted string"
+ *  - BEFORE: 'I am a quoted string'
+ *  - AFTER:  I am a quoted string
  *
  * @param {string} str
  *

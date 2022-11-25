@@ -9,12 +9,3 @@ export const equals = (a: any[], b: any[]) =>
   Array.isArray(b) &&
   a.length === b.length &&
   a.every((val, index) => val === b[index])
-
-/**
- *
- *
- * @param array
- * @param index
- */
-export const lastItemIsIndex = (array: any[], index: number): boolean =>
-  array.length - 1 !== index

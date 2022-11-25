@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals'
 import * as string from '../../utils/string'
 
-// scoped constants -->
+// scoped variables -->
 let original: string = 'This is a sentence. A good one, at that!'
 let modified: string
 let expected: string
@@ -9,7 +9,13 @@ let expected: string
 // test-suite -->
 describe('Testing the string utility library', () => {
   // test -->
-  test('A string should be truncated with an ellipsis (...) on the end of it', () => {
+  test('A string should be converted to a slug', () => {
+    expected = 'this-is-a-sentence-a-good-one-at-that'
+    expect(string.slugify(original)).toEqual(expected)
+  })
+
+  // test -->
+  test('A string should be truncated with an ellipsis (...) added to the end of it', () => {
     expected = 'This is a sentence. A goo...'
     expect(string.truncate(original, 25)).toEqual(expected)
   })
@@ -19,12 +25,6 @@ describe('Testing the string utility library', () => {
     modified = 'this-is-a-sentence'
     expected = 'this is a sentence'
     expect(string.removeHyphens(modified)).toEqual(expected)
-  })
-
-  // test -->
-  test('A string should be converted to a slug', () => {
-    expected = 'this-is-a-sentence-a-good-one-at-that'
-    expect(string.slugify(original)).toEqual(expected)
   })
 
   // test -->

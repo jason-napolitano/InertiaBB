@@ -41,7 +41,6 @@
 <script setup lang="ts">
 // component imports --------------------------------------
 import { faChevronRight, faList } from '@fortawesome/free-solid-svg-icons'
-import { lastItemIsIndex } from '@/utils/array'
 import { truncate } from '@/utils/string'
 import { defineComponent } from 'vue'
 import { title } from '@/utils/app'
@@ -50,6 +49,16 @@ import { title } from '@/utils/app'
 const props = defineProps<{
   items?: object[]
 }>()
+
+/**
+ * Check the last item in an array against its index
+ *
+ * @param array
+ * @param index
+ */
+const lastItemIsIndex = (array: any[], index: number): boolean =>
+    array.length - 1 !== index
+
 
 // component info -----------------------------------------
 defineComponent({

@@ -8,7 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LogoutController;
 
 Route::middleware('auth')->group(static function () {
-	// home
+    // home
     Route::get('', [ForumController::class, 'index'])->name('home');
 
     // profile

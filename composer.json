@@ -56,7 +56,7 @@
   "scripts": {
     "key": "php artisan key:generate",
     "test": "php artisan test",
-    "link": "php artisan storage:link",
+    "link": "mkdir storage/public/app && php artisan storage:link",
     "build": "composer migrate && php artisan db:seed && composer optimize",
     "migrate": "php artisan migrate:fresh",
     "optimize": "php artisan optimize:clear",

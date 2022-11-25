@@ -24,11 +24,11 @@ class ForumController extends Controller
 
         // Assign `user` and `threads` data for the view
         foreach ($forums as $forum) {
-	        $forum['threads'] = $forum->threads;
+            $forum['threads'] = $forum->threads;
             $forum['user'] = $forum->user;
         }
-	
-	    // Render the view
+
+        // Render the view
         return Render::frontend('forums/index', [
             'forums' => $forums,
         ]);
@@ -46,7 +46,7 @@ class ForumController extends Controller
 
         // Assign `user` and `posts` data for the view
         foreach ($threads as $thread) {
-	        $thread['posts'] = $thread->posts;
+            $thread['posts'] = $thread->posts;
             $thread['user'] = $thread->user;
         }
 
@@ -191,22 +191,22 @@ class ForumController extends Controller
             'context' => 'success',
         ]);
     }
-	
-	/**
-	 * Toggle a 'like' on and off on a forum
-	 *
-	 * @param \App\Models\Forum $forum
-	 *
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function like(Forum $forum): RedirectResponse
-	{
-		Like::toggle($forum, auth()->user());
-		
-		// Redirect with flash data
-		return redirect()->back()->with([
-			'message' => 'Reaction recorded',
-			'context' => 'success',
-		]);
-	}
+
+    /**
+     * Toggle a 'like' on and off on a forum
+     *
+     * @param \App\Models\Forum $forum
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function like(Forum $forum): RedirectResponse
+    {
+        Like::toggle($forum, auth()->user());
+
+        // Redirect with flash data
+        return redirect()->back()->with([
+            'message' => 'Reaction recorded',
+            'context' => 'success',
+        ]);
+    }
 }

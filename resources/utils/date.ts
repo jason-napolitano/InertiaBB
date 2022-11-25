@@ -27,7 +27,7 @@ export const formatDate = (value: string, format: string | null = null) =>
   dayjs(value).format(format ?? 'dddd MMM DD, YYYY hh:mm A')
 
 /** --------------------------------------------
- * Return the current year as a computed value
+ * Return the current year
  *
  * @returns {number}
  */

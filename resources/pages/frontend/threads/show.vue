@@ -52,6 +52,8 @@
             </div>
             <div class="flex justify-content-between">
               <span class="btn-group btn-group-sm">
+
+                <!-- edit button -->
                 <Tooltip content="Edit">
                   <Link
                     :href="route('threads.edit', thread)"
@@ -60,7 +62,9 @@
                     <FaIcon :icon="faEdit" size="xs" /> Edit
                   </Link>
                 </Tooltip>
+                <!-- ./edit button -->
 
+                <!-- delete button -->
                 <Tooltip content="Delete">
                   <span
                     @click="softDeleteRecord('threads', thread)"
@@ -69,21 +73,30 @@
                     <FaIcon :icon="faTrash" size="xs" /> Delete
                   </span>
                 </Tooltip>
+                <!-- ./delete button -->
 
-                <Tooltip content="Posts">
+                <!-- reply button -->
+                <Tooltip content="Replies">
                   <a href="#posts" class="btn">
                     <FaIcon :icon="faCommentDots" size="sm" class="mr-1" />
                     {{ repliesText(props.posts) }}
                   </a>
                 </Tooltip>
+                <!-- ./reply button -->
 
+                <!-- subscribe button -->
                 <Tooltip content="Posts">
-                  <Link :href="route('threads.favorite', thread.uuid)" class="btn">
-                    <FaIcon :icon="faStar" size="sm" class="mr-1" />
+                  <Link
+                    :href="route('threads.favorite', thread.uuid)"
+                    class="btn"
+                  >
+                    <FaIcon :icon="subIcon" size="sm" class="mr-1" />
                     {{ favoritesText(props.favorites) }}
                   </Link>
                 </Tooltip>
+                <!-- ./subscribe button -->
 
+                <!-- like button -->
                 <Tooltip content="Like">
                   <Link
                     :href="route('threads.like', thread.uuid)"
@@ -93,13 +106,14 @@
                     {{ likesText(props.likes) }}
                   </Link>
                 </Tooltip>
+                <!-- ./like button -->
+
               </span>
             </div>
           </div>
         </section>
-        <div class="card-body">
-          {{ thread.content }}
-        </div>
+        <div class="card-body" v-html="cleanMessage(thread.content)" />
+        <!-- isEdited message -->
         <div
           v-if="!isEditedMessage(thread) === false"
           v-text="isEditedMessage(thread)"
@@ -209,35 +223,84 @@
 <script setup lang="ts">
 // component imports --------------------------------------
 import PostReplyForm from '@/shared/frontend/replies/form.vue'
+import { storagePath, softDeleteRecord } from '@/utils/app'
 import Image from '@/shared/common/images/image.vue'
+import DOMPurify from 'isomorphic-dompurify'
 import { formatDate } from '@/utils/date'
 import { computed } from 'vue'
-import {
-  likesText,
-  repliesText,
-  isEditedMessage,
-  storagePath,
-  softDeleteRecord,
-  favoritesText,
-} from '@/utils/app'
 import {
   ThreadInterface,
   PostInterface,
   UserInterface,
   ForumInterface,
+  BaseInterface,
 } from '@/scripts/types'
 import { faThumbsUp } from '@fortawesome/free-regular-svg-icons'
 import {
+  faFaceGrinStars as subIcon,
   faCommentDots,
-  faStar,
   faShare,
   faTrash,
   faEdit,
   faFlag,
 } from '@fortawesome/free-solid-svg-icons'
+import { plural } from '@/utils/string'
 
 // computed properties ------------------------------------
 const name = computed(() => 'Awesome Member')
+
+/**
+ * Returns a message for the `likes` counter
+ *
+ * @param {object[]} value
+ *
+ * @returns {string}
+ */
+const likesText = (value: object[] | []): string =>
+  `${value.length} ${plural('Like', value.length)}`
+
+/**
+ * Returns a message for the `replies` counter
+ *
+ * @param {object[]} value
+ *
+ * @returns {string}
+ */
+const favoritesText = (value: object[] | []): string =>
+  `${value.length} ${plural('Subscriber', value.length)}`
+
+/**
+ * Returns a message for the `replies` counter
+ *
+ * @param {object[]} value
+ *
+ * @returns {string}
+ */
+const repliesText = (value: object[]): string =>
+  `${value.length} ${plural('Reply', value.length)}`
+
+/**
+ * Has a record been edited since its creation?
+ * If so, display the correct message or false.
+ *
+ * @param {BaseInterface} record
+ *
+ * @returns {string|boolean}
+ */
+const isEditedMessage = (record: BaseInterface): string | boolean =>
+  record.updated_at !== record.created_at
+    ? `Last modified on ${formatDate(record.updated_at)}`
+    : false
+
+/**
+ * Sanitize an HTML string for v-html
+ *
+ * @param {string} string
+ *
+ * @returns {string}
+ */
+const cleanMessage = (string: string): string =>
+    DOMPurify.sanitize(string, { USE_PROFILES: { html: true } })
 
 // component properties -----------------------------------
 const props = defineProps<{

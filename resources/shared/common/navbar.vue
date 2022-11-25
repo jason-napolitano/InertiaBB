@@ -22,7 +22,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav ms-auto">
-          <div class="navbar-item">
+          <!-- div class="navbar-item">
             <Link
               :href="route('profile.index', user.username)"
               class="nav-link"
@@ -32,9 +32,9 @@
                 :src="storagePath(user.image ?? 'no-avatar.jpg')"
                 :alt="user.name"
               />
-              {{ user.name ?? 'Guest'}}
+              {{ user.name }}
             </Link>
-          </div>
+          </div -->
 
           <div class="navbar-item" v-if="user !== null">
               <Link :href="route('forums.create')" class="nav-link">
