@@ -28,13 +28,13 @@ import SubmitButton from '@/shared/common/buttons/submit.vue'
 import Breadcrumb from '@/shared/common/breadcrumb.vue'
 import Pagination from '@/shared/common/pagination.vue'
 import Tooltip from '@/shared/common/tooltip.vue'
+import Editor from '@/shared/common/editor.vue'
 
 /* -----------------------------------------------------------------------------
  * Third-party components
  * -------------------------------------------------------------------------- */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { InertiaProgress } from '@inertiajs/progress'
-import { QuillEditor } from '@vueup/vue-quill'
 import { ElIcon } from 'element-plus'
 
 /* -----------------------------------------------------------------------------
@@ -58,7 +58,6 @@ import '@/styles/_variables.scss'
 import '@/styles/_progress.scss'
 import '@/styles/_animate.scss'
 import '@/styles/_colors.scss'
-import '@/styles/_editor.scss'
 import '@/styles/_layout.scss'
 import '@/styles/_custom.scss'
 import '@/styles/_alerts.scss'
@@ -81,7 +80,7 @@ const app = createInertiaApp({
       .component('Breadcrumb', Breadcrumb)
       .component('Pagination', Pagination)
       .component('Tooltip', Tooltip)
-      .component('Editor', QuillEditor)
+      .component('Editor', Editor)
       .component('ElIcon', ElIcon)
       .component('Head', Head)
       .component('Link', Link)

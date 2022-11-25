@@ -1,7 +1,0 @@
-PHP in 2023 and beyond
-
-Here we are in 2022, approaching 2023 and web development has never been more powerful or more efficient. In this post, we take a deep dive into the world famous, widely popular server-side scripting language; PHP.
-
-The history of PHP
-First, we have to look at the history of the PHP language. Invented in 1996 by Rasmus Lerdorf, PHP started off
-as a general scripting language. The acronym stood for Personal Home Page.

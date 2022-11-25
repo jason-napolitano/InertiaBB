@@ -228,6 +228,9 @@ import Image from '@/shared/common/images/image.vue'
 import DOMPurify from 'isomorphic-dompurify'
 import { formatDate } from '@/utils/date'
 import { computed } from 'vue'
+import plugin from 'grapesjs-preset-webpage';
+import 'grapesjs/dist/css/grapes.min.css'
+import grapesjs from 'grapesjs';
 import {
   ThreadInterface,
   PostInterface,
@@ -301,6 +304,14 @@ const isEditedMessage = (record: BaseInterface): string | boolean =>
  */
 const cleanMessage = (string: string): string =>
     DOMPurify.sanitize(string, { USE_PROFILES: { html: true } })
+
+
+const editor = grapesjs.init({
+  container : '#thread',
+  plugins: [
+    editor => plugin(editor, { /* options */ }),
+  ],
+});
 
 // component properties -----------------------------------
 const props = defineProps<{

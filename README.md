@@ -1,5 +1,9 @@
 # InertiaBB
-A powerful, simple, elegant Bulletin Board built on Laravel 9 and InertiaJS
+> A powerful, simple, elegant Bulletin Board built on Laravel 9 and InertiaJS
+
+<div style="text-align: center">
+**THIS IS A BETA BUILD AND NOT YET SUITABLE FOR PRODUCTION ENVIRONMENTS.**
+</div>
 
 ![Screenshot](./_docs/screenshot.JPG)
 
