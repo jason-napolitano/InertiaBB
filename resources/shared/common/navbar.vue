@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-expand-sm bg-deepocean bg-gradient opacity-90 navbar-dark fixed-top"
+    class="navbar navbar-expand-sm bg-deepocean opacity-90 navbar-dark"
   >
     <div class="container">
       <Link class="navbar-brand" :href="route('home')">
@@ -34,35 +34,21 @@
               />
               {{ user.name }}
             </Link>
-          </div -->
-
-          <div class="navbar-item" v-if="user !== null">
-              <Link :href="route('forums.create')" class="nav-link">
-                New Forum
-              </Link>
-          </div>
-
-          <div class="navbar-item" v-if="user !== null">
-              <Link :href="route('threads.create')" class="nav-link">
-                New Thread
-              </Link>
           </div>
 
           <div class="navbar-item" v-if="user !== null && can('manage_users')">
-            <Link :href="route('users.index')" class="nav-link">
-                Users
-            </Link>
-          </div>
+            <Link :href="route('users.index')" class="nav-link"> Users </Link>
+          </div -->
 
           <div class="navbar-item">
             <div class="nav-link">
-                <!-- FaIcon
+              <!-- FaIcon
                   @click="logoutAction"
                   :icon="faSignOut"
                   size="xs"
                   class="cursor-pointer"
                 / -->
-                <span @click="logoutAction" class="cursor-pointer">Logout</span>
+              <span @click="logoutAction" class="cursor-pointer">Logout</span>
             </div>
           </div>
         </div>
@@ -74,12 +60,8 @@
 <script setup lang="ts">
 // component imports
 import { logoutAction, user, can, storagePath, title } from '@/utils/app'
+import { faListDots } from '@fortawesome/free-solid-svg-icons'
 import { defineComponent } from 'vue'
-import {
-  faSignOut,
-  faListDots,
-  faUserGroup,
-} from '@fortawesome/free-solid-svg-icons'
 
 // component data
 defineComponent({

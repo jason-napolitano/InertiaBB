@@ -3,7 +3,7 @@ import * as number from '../../utils/number'
 
 // scoped variables -->
 let original: number = 12000
-let modified: number|string
+let modified: number | string
 
 // test-suite -->
 describe('Testing the number utility library', () => {

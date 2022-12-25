@@ -20,15 +20,15 @@ class Forum extends Model
         'uuid',
     ];
 
-    public function category(): Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Category::class);
-    }
-
     public function user(): Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
+	
+	public function category(): Eloquent\Relations\BelongsTo
+	{
+		return $this->belongsTo(Category::class);
+	}
 
     public function threads(): Eloquent\Relations\HasMany
     {

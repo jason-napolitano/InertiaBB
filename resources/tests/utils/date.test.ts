@@ -15,7 +15,6 @@ describe('Testing the date utility library', () => {
 
   // test -->
   test('The current year will be returned', () => {
-    expected = 'Nov 09, 2022'
     expect(date.currentYear()).toEqual(2022)
   })
 })

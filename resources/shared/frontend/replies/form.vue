@@ -1,28 +1,64 @@
 <template>
-  <div class="my-1">
-    <label for="title">Title</label>
-    <input type="text" id="title" class="form-control" />
-  </div>
-  <div class="my-1">
-    <label for="content">Content</label>
-    <Editor class="h-10rem" theme="snow" />
-  </div>
-  <div class="my-1">
-    <span class="btn btn-secondary w-100"> Submit Reply </span>
-  </div>
+  <form @submit.prevent="submitForm">
+    <div class="my-1">
+      <label for="title">Title</label>
+      <input
+        v-model="formData.name"
+        type="text"
+        id="title"
+        class="form-control"
+      />
+      <div class="text-pomegranate">
+        {{ errors.name }}
+      </div>
+    </div>
+
+    <div class="my-2">
+      <label for="content">Content</label>
+      <Editor
+        v-model:content="formData.content"
+        content-type="html"
+        :options="options"
+        class="h-10rem"
+        name="content"
+        theme="snow"
+        id="content"
+      />
+      <div class="text-pomegranate">
+        {{ errors.content }}
+      </div>
+    </div>
+    <div class="my-1">
+      <SubmitButton :form-data="formData"> Submit Reply </SubmitButton>
+    </div>
+  </form>
 </template>
 
 <script setup lang="ts">
+// component imports --------------------------------------
+import { ErrorsInterface, ThreadInterface } from '@/scripts/types'
 import { useForm } from '@inertiajs/inertia-vue3'
-import { defineComponent } from 'vue'
+import { options } from '@/scripts/editor'
 
-const formData = useForm({
-  content: null,
-})
+// form data ----------------------------------------------
 
-defineComponent({
-  name: 'form-component',
-})
+const FormInterface = {
+  content: '',
+  name: null,
+}
+
+let formData = useForm(FormInterface)
+
+const submitForm = () => {
+  // @ts-ignore
+  formData.post(route('posts.store', props.thread.uuid))
+  formData = useForm(FormInterface)
+}
+
+const props = defineProps<{
+  thread: ThreadInterface
+  errors: ErrorsInterface
+}>()
 </script>
 
 <style scoped lang="scss">

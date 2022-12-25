@@ -3,8 +3,10 @@
     <div class="col-12">
       <Breadcrumb
         :items="[
-          { name: thread.name, route: route('threads.show', thread) },
-          { name: 'Edit Form' },
+          {
+            name: `Editing: ${thread.name}`,
+            route: route('threads.show', thread),
+          },
         ]"
       />
     </div>
@@ -16,7 +18,6 @@
         class="card"
         @submit.prevent="formData.put(route('threads.update', thread))"
       >
-        <div class="card-header" v-text="thread.name" />
         <div class="card-body">
           <div class="my-2">
             <label for="name">Name</label>
@@ -113,10 +114,10 @@ const props = defineProps<{
 
 // form data ------------------------------------
 const formData = useForm({
-  name: null,
-  content: null,
-  synopsis: null,
-  forum_id: null,
+  name: null ?? props.thread.name,
+  content: null ?? props.thread.content,
+  synopsis: null ?? props.thread.synopsis,
+  forum_id: null ?? props.thread.forum_id,
 })
 </script>
 

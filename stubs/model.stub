@@ -3,19 +3,17 @@
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent;
-use Maize\Markable;
 
-class {{ class }} extends Eloquent\Model
+class {{ class }} extends Model
 {
     use Eloquent\Factories\HasFactory;
     use Eloquent\SoftDeletes;
-    use Markable;
 
     protected $fillable = [
         // ...
     ];
 
-    protected static $marks = [
+    protected $hidden = [
         // ...
     ];
 }

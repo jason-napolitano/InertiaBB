@@ -1,5 +1,7 @@
 <template layout="frontend">
+  <!-- section -->
   <section class="row">
+    <!-- row -->
     <div class="col-12">
       <h1 class="text-dark">
         <img
@@ -13,16 +15,20 @@
         </sup>
       </h1>
     </div>
+    <!-- ./row -->
   </section>
+  <!-- ./section -->
 
+  <!-- section -->
   <section class="row">
+    <!-- col -->
     <div class="col-md-6 col-sm-12">
       <ul class="list-group">
         <li class="list-group-item list-group-item-secondary">Last 5 forums</li>
         <li
           class="list-group-item"
           v-for="forum in props.forums"
-          v-if="props.forums.length > 1"
+          v-if="props.forums.length > 0"
         >
           &rarr;
           <Link
@@ -35,7 +41,9 @@
         <li class="list-group-item" v-else>There are no items to display</li>
       </ul>
     </div>
+    <!-- ./col -->
 
+    <!-- col -->
     <div class="col-md-6 col-sm-12">
       <ul class="list-group">
         <li class="list-group-item list-group-item-secondary">
@@ -44,7 +52,7 @@
         <li
           class="list-group-item"
           v-for="thread in props.threads"
-          v-if="props.threads.length > 1"
+          v-if="props.threads.length > 0"
         >
           &rarr;
           <Link
@@ -57,7 +65,9 @@
         <li class="list-group-item" v-else>There are no items to display</li>
       </ul>
     </div>
+    <!-- ./col -->
   </section>
+  <!-- section -->
 </template>
 
 <script setup lang="ts">

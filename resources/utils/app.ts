@@ -6,7 +6,7 @@ import { BaseInterface, UserInterface } from '@/scripts/types'
 import { Inertia } from '@inertiajs/inertia'
 import { plural } from '@/utils/string'
 import { computed } from 'vue'
-import {formatDate} from "@/utils/date";
+import { formatDate } from '@/utils/date'
 
 // scoped constants -------------------------------------
 
@@ -176,7 +176,7 @@ export const deleteRecord = (to: string, record: object) => {
 }
 
 /** --------------------------------------------
- * Restore a record
+ * Restore a soft-deleted record
  *
  * @param {string} to
  * @param {any}    record
@@ -186,6 +186,30 @@ export const restoreRecord = (to: string, record: object) => {
   const message = 'Record successfully restored'
   Inertia.post(window.route(`${to}.restore`, record))
 }
+
+/** --------------------------------------------
+ Return a message based on a records updated_at
+ field (if not matching created_at)
+ *
+ * @param {BaseInterface} record
+ *
+ * @returns {string|boolean}
+ */
+export const updatedAt = (record: BaseInterface): string | boolean =>
+    record.updated_at !== record.created_at
+        ? `Updated: ${formatDate(record.updated_at)}`
+        : false
+
+/** --------------------------------------------
+ * Return a message based on a records created_at
+ * field
+ *
+ * @param {BaseInterface} record
+ *
+ * @returns {string|boolean}
+ */
+export const createdAt = (record: BaseInterface): string | boolean =>
+    `Created: ${formatDate(record.updated_at)}`
 
 /** --------------------------------------------
  * Returns the storage path for laravel's

@@ -2,15 +2,23 @@ import { describe, expect, test } from '@jest/globals'
 import * as array from '../../utils/array'
 
 // scoped variables -->
-let array_one: any[]
-let array_two: any[]
+let original: any[]
+let modified: any[]
+let expected: any
 
 // test-suite -->
 describe('Testing the array utility library', () => {
   // test -->
   test('Two arrays should be completely identical', () => {
-    array_one = [1, 2, 3]
-    array_two = [1, 2, 3]
-    expect(array.equals(array_one, array_two)).toBeTruthy()
+    original = [1, 2, 3]
+    modified = [1, 2, 3]
+    expect(array.equals(original, modified)).toBeTruthy()
+  })
+
+  // test -->
+  test('An array should be imploded into a string', () => {
+    original = ['jason', 'bill', 'aaron']
+    expected = 'jason,bill,aaron'
+    expect(array.implode(original)).toEqual(expected)
   })
 })

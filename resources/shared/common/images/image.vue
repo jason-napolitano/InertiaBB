@@ -2,7 +2,7 @@
   <ElImage :src="src" :class="classes" :alt="alt" :fit="fill" :lazy="lazy">
     <template #placeholder>
       <slot name="placeholder">
-        <div class="image-slot">
+        <div class="image-slot" v-if="placeholder">
           <ElIcon>
             <Loading />
           </ElIcon>
@@ -39,26 +39,36 @@ defineComponent({
  * Component props
  * -------------------------------------------- */
 defineProps({
+  placeholder: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
   fill: {
     type: String,
+    required: false,
     default: 'cover',
     validator: (value: string) =>
       ['fill', 'contain', 'cover', 'none', 'scale-down'].includes(value),
   },
   alt: {
     type: String,
+    required: false,
     default: '',
   },
   src: {
     type: String,
+    required: false,
     default: '',
   },
   classes: {
     type: String,
+    required: false,
     default: '',
   },
   lazy: {
     type: Boolean,
+    required: false,
     default: true,
   },
 })

@@ -15,45 +15,57 @@
   <section class="row">
     <!-- column -->
     <div class="col-12">
-      <ElTable :data="props.threads.data" class="border-1 border-tin">
-        <ElTableColumn label="Thread Name">
-          <template #default="scope">
-            <div>
-              <Link
-                class="no-underline text-guardsman"
-                :href="route('threads.show', scope.row)"
-                v-text="scope.row.name"
-              />
-            </div>
-            <div>{{ scope.row.synopsis }}</div>
-          </template>
-        </ElTableColumn>
-        <ElTableColumn label="Replies" width="75">
-          <template #default="scope">
-            {{ scope.row.posts.length ?? 0 }}
-          </template>
-        </ElTableColumn>
-        <ElTableColumn label="Created By" width="150">
-          <template #default="scope">
-            <Link
-              :href="route('profile.index', scope.row.user.username)"
-              class="no-underline"
-            >
-              <code class="text-milanored">@{{ scope.row.user.username }}</code>
+      <div
+          class="flex justify-content-between align-items-center flex-row border-1 border-tin bg-clouds text-barely-white p-2"
+      >
+        <div class="flex justify-content-between">
+          <span class="text-asbestos" v-text="forum.name" />
+        </div>
+        <div class="flex justify-content-between">
+          <span class="btn-group btn-group-sm">
+            <Link :href="route('threads.create')" class="btn text-asbestos">
+              <FaIcon :icon="faFileEdit" size="xs" class="mr-1" /> Create
             </Link>
-          </template>
-        </ElTableColumn>
-        <ElTableColumn label="Created" width="130">
-          <template #default="scope">
-            {{ daysAgo(scope.row.created_at) }}
-          </template>
-        </ElTableColumn>
-        <ElTableColumn label="Last Activity" width="130">
-          <template #default="scope">
-            {{ daysAgo(scope.row.updated_at) }}
-          </template>
-        </ElTableColumn>
-      </ElTable>
+            <span class="btn text-asbestos">
+              <FaIcon :icon="faEdit" size="xs" class="mr-1" /> Edit
+            </span>
+            <Link @click="softDeleteRecord('forums', forum)" class="btn text-pomegranate">
+              <FaIcon :icon="faTrash" size="xs" class="mr-1" /> Delete
+            </Link>
+          </span>
+        </div>
+      </div>
+      <div class="border-1 border-tin">
+        <ElTable :data="props.threads.data">
+          <ElTableColumn label="Thread Name">
+            <template #default="scope">
+              <div>
+                <Link
+                  class="no-underline text-guardsman"
+                  :href="route('threads.show', scope.row)"
+                  v-text="scope.row.name"
+                />
+              </div>
+              <div>{{ scope.row.synopsis }}</div>
+            </template>
+          </ElTableColumn>
+          <ElTableColumn label="Replies" width="75">
+            <template #default="scope">
+              {{ scope.row.posts.length ?? 0 }}
+            </template>
+          </ElTableColumn>
+          <ElTableColumn label="Created" width="130">
+            <template #default="scope">
+              {{ daysAgo(scope.row.created_at) }}
+            </template>
+          </ElTableColumn>
+          <ElTableColumn label="Last Activity" width="130">
+            <template #default="scope">
+              {{ daysAgo(scope.row.updated_at) }}
+            </template>
+          </ElTableColumn>
+        </ElTable>
+      </div>
     </div>
     <!-- ./column -->
   </section>
@@ -72,8 +84,9 @@
 
 <script setup lang="ts">
 // component imports --------------------------------------
-import { faPlus as addThreadIcon } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faEdit, faFileEdit } from '@fortawesome/free-solid-svg-icons'
 import { ForumInterface, ThreadInterface } from '@/scripts/types'
+import { softDeleteRecord } from '@/utils/app'
 import { daysAgo } from '@/utils/date'
 
 // component props ----------------------------------------

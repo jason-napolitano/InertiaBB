@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('name');
             $table->text('content')->nullable();
             $table->foreignIdFor(Models\User::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignIdFor(Models\Category::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

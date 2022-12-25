@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->text('content');
             $table->foreignIdFor(Models\Forum::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignIdFor(Models\User::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+	        $table->softDeletes();
             $table->timestamps();
         });
     }

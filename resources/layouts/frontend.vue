@@ -1,11 +1,11 @@
 <template>
   <!-- header -->
-  <header class="container mt-6">
-    <div class="row">
+  <header class="container my-2">
+    <section class="row">
       <div class="col-12">
-        <AppNavbar />
+        <AppNavbar :user="user" />
       </div>
-    </div>
+    </section>
   </header>
 
   <!-- content -->
@@ -33,9 +33,9 @@
 /* ---------------------------------------------
  * Dependency imports
  * -------------------------------------------- */
+import { flashNotification, user } from '@/utils/app'
 import AppFooter from '@/shared/common/footer.vue'
 import AppNavbar from '@/shared/common/navbar.vue'
-import { flashNotification } from '@/utils/app'
 import { onMounted } from 'vue'
 
 /* ---------------------------------------------

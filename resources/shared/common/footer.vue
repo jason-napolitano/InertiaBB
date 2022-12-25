@@ -41,7 +41,10 @@
       <div class="text-center">
         <div class="links text-xs">
           <Tooltip content="Github Repository" position="top" context="light  ">
-            <a target="_blank" href="https://github.com/jason-napolitano/InertiaBB">
+            <a
+              target="_blank"
+              href="https://github.com/jason-napolitano/InertiaBB"
+            >
               <FaIcon :icon="faGithub" size="sm" /> GitHub
             </a>
           </Tooltip>

@@ -24,10 +24,8 @@ class UpdateThreadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'     => ['string', 'required'],
-            'forum_id' => ['required'],
+            'name'     => ['string',],
             'synopsis' => ['string', 'max:155'],
-            'content'  => ['string'],
         ];
     }
 }

@@ -4,7 +4,6 @@
 import { createInertiaApp, Link, Head } from '@inertiajs/inertia-vue3'
 import { resolvePageComponent } from 'vite-plugin-laravel/inertia'
 import { createApp, h } from 'vue'
-// import './echo'
 
 /* -----------------------------------------------------------------------------
  * Vue Toastification
@@ -14,7 +13,7 @@ import 'vue-toastification/dist/index.css'
 
 const toastOptions: PluginOptions = {
   position: POSITION.BOTTOM_CENTER,
-  timeout: 5000,
+  timeout: 4750,
   closeButton: false,
   closeOnClick: true,
   newestOnTop: true,
@@ -70,6 +69,7 @@ import '@/styles/_resets.scss'
  * Application configuration
  * -------------------------------------------------------------------------- */
 const app = createInertiaApp({
+  title: (title) => `InertiaBB - ${title}`,
   resolve: (name) =>
     resolvePageComponent(name, import.meta.glob('../pages/**/*.vue')),
   setup({ el, app, props }) {

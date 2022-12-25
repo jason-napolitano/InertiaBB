@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Broadcast;
+use App\Broadcasting\ContentCreatedChannel;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,12 +13,4 @@ use Illuminate\Support\Facades\Broadcast;
 | used to check if an authenticated user can listen to the channel.
 |
 */
-
-Broadcast::channel('App.Models.User.{id}', static function ($user, $id) {
-    return (int)$user->id === (int)$id;
-});
-
-
-Broadcast::channel('orders.{id}', static function ($user, $id) {
-    return $user->id === \App\Models\Forum::findOrNew($id)->user_id;
-});
+Broadcast::channel('content.created', ContentCreatedChannel::class);

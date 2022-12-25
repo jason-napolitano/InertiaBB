@@ -3,6 +3,7 @@ export interface BaseInterface {
   created_at: string
   updated_at: string
   deleted_at: string
+  id: number
 }
 
 export interface ErrorsInterface {}
@@ -28,14 +29,25 @@ export interface ForumInterface extends BaseInterface {
   links: any
   data: any
   user: UserInterface
+  category_id: number
   user_id: number
   uuid: string
   content: string
 }
 
+export interface CategoryInterface extends BaseInterface {
+  uuid: string
+  content: string
+  user_id: number
+  name: string
+  user: UserInterface
+  forums: ForumInterface[]
+}
+
 /** Thread Interface */
 export interface ThreadInterface extends BaseInterface {
   name: string
+  synopsis: string
   forum: ForumInterface
   links: object
   data: any
@@ -44,7 +56,7 @@ export interface ThreadInterface extends BaseInterface {
   user_id: number
   uuid: string
   content: string
-  posts: PostInterface
+  posts: PostInterface[]
 }
 
 /** Post Interface */

@@ -6,26 +6,27 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateForumRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return auth()->check();
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules()
-    {
-        return [
-            'name'    => ['string', 'required'],
-            'content' => ['string'],
-        ];
-    }
+	/**
+	 * Determine if the user is authorized to make this request.
+	 *
+	 * @return bool
+	 */
+	public function authorize()
+	{
+		return auth()->check();
+	}
+	
+	/**
+	 * Get the validation rules that apply to the request.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function rules()
+	{
+		return [
+			'name'        => ['string', 'required'],
+			'category_id' => ['required'],
+			'content'     => ['string'],
+		];
+	}
 }

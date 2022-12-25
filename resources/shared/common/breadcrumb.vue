@@ -6,7 +6,7 @@
       <Link class="no-underline text-guardsman mr-1" :href="route('home')">
         <FaIcon :icon="faList" size="xs" class="mr-1" /> {{ title }}
       </Link>
-      <FaIcon :icon="faChevronRight" size="xs" class="bc-icon" />
+      <FaIcon :icon="faChevronRight" size="xs" />
     </div>
     <!-- ./flex item -->
 
@@ -57,8 +57,7 @@ const props = defineProps<{
  * @param index
  */
 const lastItemIsIndex = (array: any[], index: number): boolean =>
-    array.length - 1 !== index
-
+  array.length - 1 !== index
 
 // component info -----------------------------------------
 defineComponent({

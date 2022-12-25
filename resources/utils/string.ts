@@ -58,7 +58,9 @@ export const toTitleCase = (phrase: string) =>
   phrase
     .toLowerCase()
     .split(' ')
-    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .map(
+      (string: string) => string.charAt(0).toUpperCase() + string.substring(1)
+    )
     .join(' ')
 
 /** --------------------------------------------
